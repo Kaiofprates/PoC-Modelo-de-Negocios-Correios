@@ -1,28 +1,31 @@
-# Adonis API application
+## PoC ( Proof of Concept) Business model based on the postal freight calculation api.
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+> Get Price
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick --api-only
+```sh
+curl --request GET \
+  --url http://127.0.0.1:3333/api \
+  --header 'content-type: application/json' \
+  --data '{
+	"cepOrigin" : "39401138",
+	"cepDestin" : "01311000"
+}'
 ```
 
-or manually clone the repo and then run `npm install`.
+> response
 
+```sh
+[
+  {
+    "Codigo": 40010,
+    "Valor": "58,40",
+    "ValorMaoPropria": "0,00",
+    "ValorAvisoRecebimento": "0,00",
+    "ValorValorDeclarado": "0,00",
+    "Erro": "",
+    "MsgErro": "",
+    "ValorSemAdicionais": "58,40"
+  }
+]
 
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
 ```
